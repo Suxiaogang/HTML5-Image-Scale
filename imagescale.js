@@ -28,7 +28,7 @@ function loadAndDraw(imgFile, quality){
 
 $(document).ready(function(){
 
-	$(".clicker").click(function () {
+	$(".popup").click(function () {
 		$('#input').trigger('click');
 	});
 
@@ -49,15 +49,13 @@ $(document).ready(function(){
 		var imgFile;
 		reader.readAsDataURL(file);
 		reader.onload = function(e){
-			$('.clicker').prop('src', '');
-			$('.clicker').css('background-image', 'url('+ this.result+')');
-			$('.clicker').css('background-position', 'center');
+			$('.popup').prop('src', this.result);
 			var i = document.createElement("p");
 			var r = e.target.result.split(";");
 			r = r[0].split("/");
 			r = r[1].split("+");
 			r = r[0].toUpperCase();
-			i.innerHTML = "<br />This is a <b>" + r + "</b> image, size of <b>" + (e.total / 1024).toFixed(2) + "</b> KB.";
+			i.innerHTML = "<br />This is the original <b>" + r + "</b> image, size of <b>" + (e.total / 1024).toFixed(2) + "</b> KB.";
 			$('.hint').html(i);
 		};
 		reader.onloadend = function(e) {
