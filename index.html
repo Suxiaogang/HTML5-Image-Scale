@@ -7,8 +7,13 @@
 	<link type="text/css" href="bootstrap.min.css" rel="stylesheet">
 	<link type="text/css" href="loaders.min.css" rel="stylesheet">
 	<link type="text/css" href="sweet-alert.min.css" rel="stylesheet">
-    <title>Html5-image-scale</title>
+	<title>Html5-image-scale</title>
+	<link rel="shortcut icon" href="images/blacktocat.png" />
 	<style>
+	img{
+		border: none;
+		margin: 20px 0;
+	}
 	button:focus{outline:0 !important;}
 	input:focus,input:active,label:focus,label:active{
 		outline:0 !important;
@@ -46,15 +51,13 @@
 		margin-top: 20px;
 	}
 	.clicker{
-		border: 3px dashed #555;
-		border-radius: 3px;
-		margin-top:20px;
-		background-color: #FFF;
-		width:800px;
-		height:500px;
+		border: 1px dashed #555;
+	}
+ 	.clicker img{ 
+		 border: none; 
 	}
 	.clicker:hover{
-		-webkit-transition: all .3s;
+		transition: all .3s;
 		cursor:pointer;
 		opacity:0.9;
 	}
@@ -70,12 +73,6 @@
 	}
 	.hint{
 		margin-bottom:20px;
-	}
-	#scaledImg{
-		max-width:800px;
-		border: 3px dashed #555;
-		border-radius: 3px;
-		margin-bottom:40px;
 	}
 	</style>
 	</head>
@@ -94,24 +91,27 @@
     <!-- MAIN CONTENT -->
 	<div class="container main">
 		<div class="row">
-			<div class="col-sm-12 text-center">
-				<input id="input" type="file" class="uploadTrigger" style="display:none;">
-				sample large image file: <a href="file/large1.jpg">file1</a> <a href="file/large2.jpg">file2</a> <br>
-				<img src="" class="popup clicker">
+			<div class="col-md-12 col-lg-12 text-center">
+				<input id="input" type="file" class="uploadTrigger" style="display:none;"> sample large image file:
+				<a href="file/large1.jpg">file1</a>
+				<a href="file/large2.jpg">file2</a>
 			</div>
 
-			<div class="col-sm-12 text-center hint"></div>
+			<div class="col-md-6 col-lg-6 text-center">
+				<input id="input" type="file" class="uploadTrigger" style="display:none;">
+				<img id="uploader" src="images/placeholder-image.png" class="rounded popup clicker" width="400px" height="300px">
+				<p class="col-lg-12 text-center hint"></p>
+			</div>
+
+			<div class="col-md-6 col-lg-6 text-center">
+				<img class="rounded" id="scaledImg" src="" style="max-width: 400px;">
+				<p id="newImageTitle" style="display:none;">this is the scaled image with a size only of <span id="new_img_size"></span> kb.</p>
+			</div>
 		</div>
 	</div>
 
-	<div class="col-sm-12">
-		<canvas id="canvas" style="display:none;"></canvas>
-	</div>
-	<div class="col-sm-12 text-center" style="margin-bottom:10px;">
-		<h5 id="newImageTitle" style="display:none;">this is the scaled image, right click and save it to check the file size.</h5>
-		<img id="scaledImg" src="">
-	</div>
-
+		
+ 	<canvas id="canvas" style="display:none;"></canvas>
 	<script type="text/javascript" src="jquery.min.js"></script>
 	<script type="text/javascript" src="sweet-alert.min.js"></script>
 	<script type="text/javascript" src="imagescale.js"></script>
